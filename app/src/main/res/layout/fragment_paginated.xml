@@ -7,7 +7,9 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -17,10 +19,9 @@
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_height="match_parent"
+                android:imeOptions="actionDone"
                 android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-                app:autoShowKeyboard="false"
                 app:iconifiedByDefault="false"
                 app:queryHint="Start searching..." />
 
