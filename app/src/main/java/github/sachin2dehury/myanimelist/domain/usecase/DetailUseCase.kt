@@ -1,7 +1,5 @@
 package github.sachin2dehury.myanimelist.domain.usecase
 
-import com.squareup.moshi.Moshi
-import github.sachin2dehury.myanimelist.data.model.ErrorRemoteModel
 import github.sachin2dehury.myanimelist.data.repository.DetailRepository
 import github.sachin2dehury.myanimelist.domain.ResultType
 import github.sachin2dehury.myanimelist.domain.toDetailModel
@@ -15,9 +13,12 @@ class DetailUseCase(private val detailRepository: DetailRepository) {
         if (response.isSuccessful) {
             emit(ResultType.Success(response.body()?.data?.toDetailModel()))
         } else {
-            val body = Moshi.Builder().build().adapter(ErrorRemoteModel::class.java)
-                .fromJson(response.errorBody()?.string().orEmpty())
-            emit(ResultType.Error(body?.error.orEmpty()))
+            emit(
+                ResultType.Error(
+                    response.body()?.messages?.values?.joinToString { it?.firstOrNull().orEmpty() }
+                        .orEmpty()
+                )
+            )
         }
     }
 }

@@ -71,4 +71,5 @@ dependencies {
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 
     implementation("io.coil-kt:coil:2.5.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
 }

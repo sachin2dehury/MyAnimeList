@@ -10,7 +10,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PaginatedViewModel @Inject constructor(private val useCase: PaginatedUseCase) : ViewModel() {
 
-    private val pagingConfig = PagingConfig(10)
+    private val pagingConfig = PagingConfig(5)
 
     val pager = Pager(pagingConfig, 1) {
         AnimePagingSource(useCase)

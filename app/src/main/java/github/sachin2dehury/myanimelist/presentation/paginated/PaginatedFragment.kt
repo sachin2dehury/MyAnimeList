@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -47,6 +48,11 @@ class PaginatedFragment : Fragment() {
         adapter.addLoadStateListener {
             binding?.loader?.isVisible =
                 it.append is LoadState.Loading || it.refresh is LoadState.Loading
+
+            (it.refresh as? LoadState.Error)?.error?.let {
+                println(it)
+                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
+            }
         }
     }
 

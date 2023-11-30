@@ -12,7 +12,7 @@ data class DetailModel(
     val openingTheme: List<String>,
     val rank: Int,
     val rating: String,
-    val score: Int,
+    val score: Float,
     val streaming: String,
     val synopsis: String,
     val title: String,

@@ -20,7 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:gravity="center"
+        android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
         app:layout_constraintTop_toBottomOf="@id/image"
         tools:text="String" />
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
+        android:gravity="center"
         android:maxLines="2"
         android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
         app:layout_constraintTop_toBottomOf="@id/title_eng"
@@ -55,22 +57,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        app:layout_constraintEnd_toStartOf="@id/tv_rating"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_score"
         app:layout_constraintTop_toBottomOf="@id/title_jap"
         tools:text="Rank : 232" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_rank"
-        app:layout_constraintTop_toBottomOf="@id/title_jap"
-        tools:text="Air : 1988 to 1999" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_episodes"
@@ -89,23 +79,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-        app:layout_constraintEnd_toStartOf="@id/tv_aired"
-        app:layout_constraintStart_toEndOf="@+id/tv_episodes"
-        app:layout_constraintTop_toBottomOf="@id/tv_score"
-        tools:text="Duration : 24 mins" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_aired"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_duration"
+        app:layout_constraintStart_toEndOf="@+id/tv_episodes"
         app:layout_constraintTop_toBottomOf="@id/tv_score"
-        tools:text="Duration : 24 mins" />
-
+        tools:text="24 mins per ep" />
 </androidx.constraintlayout.widget.ConstraintLayout>

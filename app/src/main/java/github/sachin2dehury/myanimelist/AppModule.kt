@@ -51,5 +51,5 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesPaginatedUseCase(repository: PaginatedRepository, moshi: Moshi) = PaginatedUseCase(repository, moshi)
+    fun providesPaginatedUseCase(repository: PaginatedRepository) = PaginatedUseCase(repository)
 }

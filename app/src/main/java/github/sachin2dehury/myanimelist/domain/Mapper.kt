@@ -1,23 +1,16 @@
 package github.sachin2dehury.myanimelist.domain
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import github.sachin2dehury.myanimelist.data.model.DetailRemoteModel
 import github.sachin2dehury.myanimelist.data.model.PaginatedRemoteModel
 import github.sachin2dehury.myanimelist.domain.model.DetailModel
 import github.sachin2dehury.myanimelist.domain.model.PaginatedModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.plus
 
 fun PaginatedRemoteModel.Data.toPaginatedModel() = PaginatedModel(
-    aired?.prop?.string.orEmpty(),
     duration.orEmpty(),
     episodes.orZero(),
     images?.webp?.largeImageUrl.orEmpty(),
     malId.orZero(),
     rank.orZero(),
-    rating.orEmpty(),
     score.orZero(),
     title.orEmpty(),
     titleEnglish.orEmpty(),
@@ -46,3 +39,4 @@ fun DetailRemoteModel.Data.toDetailModel() = DetailModel(
 )
 
 fun Int?.orZero() = this ?: 0
+fun Float?.orZero() = this ?: 0f

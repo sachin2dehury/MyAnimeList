@@ -6,7 +6,11 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class PaginatedRemoteModel(
     val data: List<Data?>? = null,
+    val error: String? = null,
+    val messages: Map<String?, List<String?>?>? = null,
     val pagination: Pagination? = null,
+    val status: Int? = null,
+    val type: String? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Data(
@@ -31,7 +35,7 @@ data class PaginatedRemoteModel(
         val producers: List<Producer?>? = null,
         val rank: Int? = null,
         val rating: String? = null,
-        val score: Int? = null,
+        val score: Float? = null,
         @Json(name = "scored_by")
         val scoredBy: Int? = null,
         val season: String? = null,

@@ -6,6 +6,10 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class DetailRemoteModel(
     val data: Data? = null,
+    val error: String? = null,
+    val messages: Map<String?, List<String?>?>? = null,
+    val status: Int? = null,
+    val type: String? = null,
 ) {
     @JsonClass(generateAdapter = true)
     data class Data(
@@ -32,7 +36,7 @@ data class DetailRemoteModel(
         val rank: Int? = null,
         val rating: String? = null,
         val relations: List<Relation?>? = null,
-        val score: Int? = null,
+        val score: Float? = null,
         @Json(name = "scored_by")
         val scoredBy: Int? = null,
         val season: String? = null,
