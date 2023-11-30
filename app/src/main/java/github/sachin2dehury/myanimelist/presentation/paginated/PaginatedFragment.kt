@@ -9,18 +9,20 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import dagger.hilt.android.AndroidEntryPoint
+import github.sachin2dehury.myanimelist.R
 import github.sachin2dehury.myanimelist.databinding.FragmentPaginatedBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PaginatedFragment : Fragment() {
+class PaginatedFragment : Fragment(), PaginatedClickListener {
 
     private var binding: FragmentPaginatedBinding? = null
 
-    private val adapter = PaginatedAdapter()
+    private val adapter = PaginatedAdapter(this)
 
     private val viewModel by viewModels<PaginatedViewModel>()
 
@@ -50,7 +52,9 @@ class PaginatedFragment : Fragment() {
                 it.append is LoadState.Loading || it.refresh is LoadState.Loading
 
             (it.refresh as? LoadState.Error)?.error?.let {
-                println(it)
+                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
+            }
+            (it.append as? LoadState.Error)?.error?.let {
                 Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
             }
         }
@@ -63,5 +67,15 @@ class PaginatedFragment : Fragment() {
     override fun onDestroyView() {
         binding = null
         super.onDestroyView()
+    }
+
+    override fun onClick(id: Int) {
+        if (findNavController().currentDestination?.id == R.id.paginatedFragment) {
+            findNavController().navigate(
+                PaginatedFragmentDirections.actionListingFragmentToDetailFragment(
+                    id,
+                ),
+            )
+        }
     }
 }

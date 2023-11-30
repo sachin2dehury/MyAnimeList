@@ -7,8 +7,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import github.sachin2dehury.myanimelist.data.AnimeService
 import github.sachin2dehury.myanimelist.data.AnimeService.Companion.BASE_URL
+import github.sachin2dehury.myanimelist.data.repository.DetailRepository
+import github.sachin2dehury.myanimelist.data.repository.DetailRepositoryImpl
 import github.sachin2dehury.myanimelist.data.repository.PaginatedRepository
 import github.sachin2dehury.myanimelist.data.repository.PaginatedRepositoryImpl
+import github.sachin2dehury.myanimelist.domain.usecase.DetailUseCase
 import github.sachin2dehury.myanimelist.domain.usecase.PaginatedUseCase
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -52,4 +55,13 @@ object AppModule {
     @Provides
     @Singleton
     fun providesPaginatedUseCase(repository: PaginatedRepository) = PaginatedUseCase(repository)
+
+    @Provides
+    @Singleton
+    fun providesDetailRepository(service: AnimeService): DetailRepository =
+        DetailRepositoryImpl(service)
+
+    @Provides
+    @Singleton
+    fun providesDetailUseCase(repository: DetailRepository) = DetailUseCase(repository)
 }

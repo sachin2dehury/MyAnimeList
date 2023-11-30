@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface AnimeService {
 
-    @GET("v4/anime")
+    @GET("v4/top/anime")
     suspend fun getPaginatedAnime(
         @Query("page") page: Int,
         @Query("limit") limit: Int,

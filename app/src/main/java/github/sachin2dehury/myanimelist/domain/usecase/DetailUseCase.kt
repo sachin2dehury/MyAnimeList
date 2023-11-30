@@ -1,8 +1,8 @@
 package github.sachin2dehury.myanimelist.domain.usecase
 
 import github.sachin2dehury.myanimelist.data.repository.DetailRepository
+import github.sachin2dehury.myanimelist.data.toDetailModel
 import github.sachin2dehury.myanimelist.domain.ResultType
-import github.sachin2dehury.myanimelist.domain.toDetailModel
 import kotlinx.coroutines.flow.flow
 
 class DetailUseCase(private val detailRepository: DetailRepository) {
@@ -16,8 +16,8 @@ class DetailUseCase(private val detailRepository: DetailRepository) {
             emit(
                 ResultType.Error(
                     response.body()?.messages?.values?.joinToString { it?.firstOrNull().orEmpty() }
-                        .orEmpty()
-                )
+                        .orEmpty(),
+                ),
             )
         }
     }

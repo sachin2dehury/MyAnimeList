@@ -2,8 +2,8 @@ package github.sachin2dehury.myanimelist.domain.usecase
 
 import androidx.paging.PagingSource
 import github.sachin2dehury.myanimelist.data.repository.PaginatedRepository
+import github.sachin2dehury.myanimelist.data.toPaginatedModel
 import github.sachin2dehury.myanimelist.domain.model.PaginatedModel
-import github.sachin2dehury.myanimelist.domain.toPaginatedModel
 
 class PaginatedUseCase(private val repository: PaginatedRepository) {
     suspend operator fun invoke(
@@ -12,8 +12,7 @@ class PaginatedUseCase(private val repository: PaginatedRepository) {
     ): PagingSource.LoadResult<Int, PaginatedModel> {
         val response = repository.getPaginatedAnime(page, limit)
         return if (response.isSuccessful && response.body()?.error.isNullOrEmpty()) {
-            val nextPage =
-                if (response.body()?.pagination?.hasNextPage == true) page + 1 else null
+            val nextPage = if (response.body()?.pagination?.hasNextPage == true) page + 1 else null
             PagingSource.LoadResult.Page(
                 response.body()?.data.orEmpty().filterNotNull().map { it.toPaginatedModel() },
                 null,

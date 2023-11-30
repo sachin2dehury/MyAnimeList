@@ -2,8 +2,8 @@ package github.sachin2dehury.myanimelist.presentation.paginated
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import github.sachin2dehury.myanimelist.data.orZero
 import github.sachin2dehury.myanimelist.domain.model.PaginatedModel
-import github.sachin2dehury.myanimelist.domain.orZero
 import github.sachin2dehury.myanimelist.domain.usecase.PaginatedUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -10,11 +10,14 @@ import coil.transform.RoundedCornersTransformation
 import github.sachin2dehury.myanimelist.databinding.ItemListingBinding
 import github.sachin2dehury.myanimelist.domain.model.PaginatedModel
 
-class PaginatedAdapter :
+class PaginatedAdapter(private val listener: PaginatedClickListener) :
     PagingDataAdapter<PaginatedModel, PaginatedViewHolder>(PaginatedDiffUtil()) {
     override fun onBindViewHolder(holder: PaginatedViewHolder, position: Int) {
         val item = getItem(position) ?: return
         with(holder.binding) {
+            root.setOnClickListener {
+                listener.onClick(item.malId)
+            }
             image.load(item.images) {
                 transformations(RoundedCornersTransformation(20f))
                 crossfade(true)
@@ -40,7 +43,7 @@ class PaginatedAdapter :
             tvRank.text = "Rank : ${item.rank}"
             tvEpisodes.text = "Episodes : ${item.episodes}"
             tvDuration.text = item.duration
-            titleEng.text = item.titleEnglish
+            titleEng.text = if (item.titleEnglish.isNullOrEmpty()) item.title else item.titleEnglish
             titleJap.text = item.titleJapanese
         }
     }

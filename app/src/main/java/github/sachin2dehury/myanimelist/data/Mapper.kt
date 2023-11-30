@@ -1,4 +1,4 @@
-package github.sachin2dehury.myanimelist.domain
+package github.sachin2dehury.myanimelist.data
 
 import github.sachin2dehury.myanimelist.data.model.DetailRemoteModel
 import github.sachin2dehury.myanimelist.data.model.PaginatedRemoteModel
