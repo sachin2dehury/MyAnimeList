@@ -131,7 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/tv_rating"
             tools:text="Pg rated" />
 
@@ -140,7 +141,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/tv_background"
             tools:text="Pg rated" />
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -49,7 +50,7 @@ class PaginatedFragment : Fragment(), PaginatedClickListener {
         }
         adapter.addLoadStateListener {
             binding?.loader?.isVisible =
-                it.append is LoadState.Loading || it.refresh is LoadState.Loading
+                (it.append is LoadState.Loading) || (it.refresh is LoadState.Loading)
 
             (it.refresh as? LoadState.Error)?.error?.let {
                 Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
@@ -62,6 +63,18 @@ class PaginatedFragment : Fragment(), PaginatedClickListener {
 
     private fun setupUi() {
         binding?.recyclerView?.adapter = adapter
+        binding?.searchBar?.isSubmitButtonEnabled = true
+
+        binding?.searchBar?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.updateState(query = query)
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                return true
+            }
+        })
     }
 
     override fun onDestroyView() {

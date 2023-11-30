@@ -9,8 +9,10 @@ class PaginatedUseCaseImpl(private val repository: PaginatedRepository) : Pagina
     override suspend operator fun invoke(
         page: Int,
         limit: Int,
+        query: String?,
+        sortingOrder: String?,
     ): PagingSource.LoadResult<Int, PaginatedModel> {
-        val response = repository.getPaginatedAnime(page, limit)
+        val response = repository.getPaginatedAnime(page, limit, query, sortingOrder)
         return if (response.isSuccessful && response.body()?.error.isNullOrEmpty()) {
             val nextPage = if (response.body()?.pagination?.hasNextPage == true) page + 1 else null
             PagingSource.LoadResult.Page(
@@ -22,7 +24,7 @@ class PaginatedUseCaseImpl(private val repository: PaginatedRepository) : Pagina
             PagingSource.LoadResult.Error(
                 Throwable(
                     response.body()?.messages?.values?.joinToString { it?.firstOrNull().orEmpty() }
-                        .orEmpty(),
+                        ?: "Something went wrong!!",
                 ),
             )
         }

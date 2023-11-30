@@ -97,8 +97,8 @@ class DetailFragment : Fragment() {
             tvRating.text = "Rating : ${data.rating}"
             tvAired.text = "Air : ${data.aired}"
             tvGenre.text = "Genres : ${data.genres.joinToString()}"
-            tvBackground.text = "Background :\n\t${data.titleJapanese}"
-            tvSynopsis.text = "Synopsis :\n\t${data.synopsis}"
+            tvBackground.text = "Background :\n\n\t${data.titleJapanese}"
+            tvSynopsis.text = "Synopsis :\n\n\t${data.synopsis}"
             tvOpenings.text = "Opening theme :\n${data.openingTheme.joinToString("\n")}"
             tvEndings.text = "Ending theme :\n${data.endingTheme.joinToString("\n")}"
         }

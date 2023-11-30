@@ -7,5 +7,7 @@ interface PaginatedUseCase {
     suspend operator fun invoke(
         page: Int,
         limit: Int,
+        query: String?,
+        sortingOrder: String?,
     ): PagingSource.LoadResult<Int, PaginatedModel>
 }

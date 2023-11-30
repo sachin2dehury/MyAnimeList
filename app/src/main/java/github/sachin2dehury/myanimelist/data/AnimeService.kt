@@ -13,6 +13,8 @@ interface AnimeService {
     suspend fun getPaginatedAnime(
         @Query("page") page: Int,
         @Query("limit") limit: Int,
+        @Query("q") query: String?,
+        @Query("order_by") sorting: String?,
     ): Response<PaginatedRemoteModel>
 
     @GET("v4/anime/{id}/full")

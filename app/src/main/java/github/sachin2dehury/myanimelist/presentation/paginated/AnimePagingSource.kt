@@ -8,7 +8,11 @@ import github.sachin2dehury.myanimelist.domain.usecase.PaginatedUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class AnimePagingSource(private val useCase: PaginatedUseCase) :
+class AnimePagingSource(
+    private val useCase: PaginatedUseCase,
+    private val query: String?,
+    private val sortingOrder: String?
+) :
     PagingSource<Int, PaginatedModel>() {
 
     override fun getRefreshKey(state: PagingState<Int, PaginatedModel>): Int? {
@@ -18,6 +22,6 @@ class AnimePagingSource(private val useCase: PaginatedUseCase) :
     override suspend fun load(params: LoadParams<Int>) = withContext(Dispatchers.IO) {
         val page = params.key.orZero()
         val limit = params.loadSize.orZero()
-        useCase.invoke(page, limit)
+        useCase.invoke(page, limit, query, sortingOrder)
     }
 }
