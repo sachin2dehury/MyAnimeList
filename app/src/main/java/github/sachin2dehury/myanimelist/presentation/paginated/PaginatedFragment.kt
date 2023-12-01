@@ -63,6 +63,7 @@ class PaginatedFragment : Fragment(), PaginatedClickListener {
 
     private fun setupUi() {
         binding?.recyclerView?.adapter = adapter
+//        binding?.recyclerView?.addItemDecoration(MarginDecorator())
         binding?.searchBar?.isSubmitButtonEnabled = true
         binding?.searchBar?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
