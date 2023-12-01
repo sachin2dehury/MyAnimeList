@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/paginatedFragment"
         android:name="github.sachin2dehury.myanimelist.presentation.paginated.PaginatedFragment"
-        android:label="ListingFragment" >
+        android:label="ListingFragment">
         <action
             android:id="@+id/action_listingFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -15,7 +15,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="github.sachin2dehury.myanimelist.presentation.detail.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment">
         <argument
             android:name="id"
             app:argType="integer" />
