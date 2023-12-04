@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import dagger.hilt.android.lifecycle.HiltViewModel
+import github.sachin2dehury.myanimelist.domain.AnimePagingSource
 import github.sachin2dehury.myanimelist.domain.usecase.PaginatedUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

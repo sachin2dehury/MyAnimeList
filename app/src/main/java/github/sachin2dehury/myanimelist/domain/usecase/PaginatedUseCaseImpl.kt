@@ -2,7 +2,7 @@ package github.sachin2dehury.myanimelist.domain.usecase
 
 import androidx.paging.PagingSource
 import github.sachin2dehury.myanimelist.data.repository.PaginatedRepository
-import github.sachin2dehury.myanimelist.data.toPaginatedModel
+import github.sachin2dehury.myanimelist.domain.toPaginatedModel
 import github.sachin2dehury.myanimelist.domain.model.PaginatedModel
 
 class PaginatedUseCaseImpl(private val repository: PaginatedRepository) : PaginatedUseCase {

@@ -2,9 +2,9 @@ package github.sachin2dehury.myanimelist.presentation.paginated
 
 import android.graphics.Rect
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class MarginDecorator(private val space: Int = 20) :
     RecyclerView.ItemDecoration() {
@@ -17,7 +17,7 @@ class MarginDecorator(private val space: Int = 20) :
     ) {
         val orientation =
             (parent.layoutManager as? LinearLayoutManager)?.orientation ?: RecyclerView.VERTICAL
-        val span = (parent.layoutManager as? GridLayoutManager)?.spanCount ?: 1
+        val span = (parent.layoutManager as? StaggeredGridLayoutManager)?.spanCount ?: 1
         with(outRect) {
             if (orientation == RecyclerView.VERTICAL) {
                 if (parent.getChildAdapterPosition(view) < span) {

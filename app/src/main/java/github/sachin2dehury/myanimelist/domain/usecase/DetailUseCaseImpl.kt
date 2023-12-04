@@ -1,7 +1,7 @@
 package github.sachin2dehury.myanimelist.domain.usecase
 
 import github.sachin2dehury.myanimelist.data.repository.DetailRepository
-import github.sachin2dehury.myanimelist.data.toDetailModel
+import github.sachin2dehury.myanimelist.domain.toDetailModel
 import github.sachin2dehury.myanimelist.domain.ResultType
 import kotlinx.coroutines.flow.flow
 
